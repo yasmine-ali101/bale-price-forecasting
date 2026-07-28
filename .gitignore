@@ -1,0 +1,20 @@
+# Generated sample data — recreated deterministically by src/bales/data.py
+data/*.csv
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+
+# Tooling
+.pytest_cache/
+.ipynb_checkpoints/
+.ruff_cache/
+
+# OS
+.DS_Store
+Thumbs.db
