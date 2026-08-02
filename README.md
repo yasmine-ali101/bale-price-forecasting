@@ -8,7 +8,7 @@ price signal from a collapsing exchange rate.
   <img alt="Python" src="https://img.shields.io/badge/Python-3.10+-3776AB?logo=python&logoColor=white">
   <img alt="XGBoost" src="https://img.shields.io/badge/model-XGBoost-EC4899">
   <img alt="Tuning" src="https://img.shields.io/badge/configs%20searched-120-8B5CF6">
-  <img alt="Tests" src="https://img.shields.io/badge/tests-19%20passing-16A34A">
+  <img alt="Tests" src="https://github.com/yasmine-ali101/bale-price-forecasting/actions/workflows/tests.yml/badge.svg">
 </p>
 
 ---
