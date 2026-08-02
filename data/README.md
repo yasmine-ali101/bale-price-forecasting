@@ -1,6 +1,6 @@
 # Data
 
-Populated on first run — this directory ships empty on purpose.
+Populated on first run. This directory ships empty on purpose.
 
 ```bash
 python -m bales.data                # writes both sample CSVs
@@ -9,7 +9,7 @@ python scripts/run_experiment.py    # generates them automatically if absent
 
 ## Files
 
-### `pet_local_prices_sample.csv` — transaction ledger
+### `pet_local_prices_sample.csv`, the transaction ledger
 
 | Column | Description |
 |---|---|
@@ -27,25 +27,25 @@ python scripts/run_experiment.py    # generates them automatically if absent
 | `Supply Area` | Collection governorate |
 | `Bulking Station Name` | Receiving station |
 
-### `official_exchange_rates_sample.csv` — EGP/USD rates
+### `official_exchange_rates_sample.csv`, the EGP/USD rates
 
 | Column | Description |
 |---|---|
 | `Date` | Business days only |
 | `Buy` | Official buy rate |
-| `Sell` | Official sell rate — used for USD conversion |
+| `Sell` | Official sell rate, used for USD conversion |
 
 ## What the generator reproduces
 
 The original ledger was private. The generator recreates its structure and the
 market conditions that make the problem interesting:
 
-- **Three real devaluation steps** — March 2022, October 2022, January 2023,
-  taking EGP/USD from ~15.7 to ~29.7
-- **Grade premiums** — Clear PET at a premium, Mixed at a discount
+- **Three real devaluation steps**, in March 2022, October 2022 and January 2023,
+  taking EGP/USD from roughly 15.7 to 29.7
+- **Grade premiums**, with Clear PET at a premium and Mixed at a discount
 - **AR(1) price wander** plus annual seasonality over a slow upward USD trend
 - **Lighter Friday trading**
-- **Data quality issues** — duplicate rows (~0.8%) and missing prices (~1.2%)
+- **Data quality issues**, duplicate rows at roughly 0.8% and missing prices at 1.2%
 - **FX published on business days only**, so weekend trades need the last quote
 
 ## Using your own data

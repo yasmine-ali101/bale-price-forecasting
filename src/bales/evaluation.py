@@ -36,7 +36,7 @@ def directional_accuracy(y_true: np.ndarray, y_pred: np.ndarray, last_known: np.
 
     # A model that predicts exactly the last known value (the random walk) never
     # calls a direction at all. Scoring that as 0% would read as "always wrong"
-    # when the truth is "never answered" — so it is undefined, not zero.
+    # when the truth is "never answered", so it is undefined, not zero.
     if not (predicted_move != 0).any():
         return float("nan")
 

@@ -1,6 +1,6 @@
 """Feature engineering for the daily bale-price series.
 
-The original notebook trained on calendar features only — `Day`, `Month`, `Year`,
+The original notebook trained on calendar features only, `Day`, `Month`, `Year`,
 `Day_of_the_year`, `Quarter`, `week_of_year`. That cannot work for this target,
 for a specific and instructive reason:
 
@@ -8,7 +8,7 @@ for a specific and instructive reason:
 decision tree splits on thresholds it has seen; asked to predict at `Year=2023`
 it falls into the `Year <= 2022` leaf and returns a 2022-level price. Since the
 series trends upward, every forecast is biased low, and no amount of tuning
-fixes it — the information simply is not in the feature set.
+fixes it, the information simply is not in the feature set.
 
 Lags fix it by giving the model the recent *level* of the series instead of asking
 it to infer level from a calendar label.
@@ -31,7 +31,7 @@ TARGET = "Unit_Price_in_USD"
 def add_calendar_features(frame: pd.DataFrame) -> pd.DataFrame:
     """Calendar parts plus cyclical encodings.
 
-    `Year` is deliberately excluded — see the module docstring. `month` and
+    `Year` is deliberately excluded, see the module docstring. `month` and
     `dayofyear` are kept because they carry genuine seasonality that repeats
     across years, unlike a monotonically increasing year label.
     """
@@ -95,8 +95,7 @@ def add_lag_features(
 def add_market_features(frame: pd.DataFrame, horizon: int = HORIZON) -> pd.DataFrame:
     """Lagged trading-activity and FX features.
 
-    These are observed quantities, so they must be lagged by the horizon too —
-    next week's trade count is no more knowable than next week's price.
+    These are observed quantities, so they must be lagged by the horizon too, next week's trade count is no more knowable than next week's price.
     """
     out = frame.copy()
     if "transactions" in out:
@@ -104,7 +103,7 @@ def add_market_features(frame: pd.DataFrame, horizon: int = HORIZON) -> pd.DataF
         out["transactions_roll_14"] = out["transactions"].shift(horizon).rolling(14).mean()
     if "fx_sell" in out:
         out["fx_lag"] = out["fx_sell"].shift(horizon)
-        # Rate of devaluation — the pressure on nominal prices.
+        # Rate of devaluation, the pressure on nominal prices.
         out["fx_change_28"] = out["fx_sell"].shift(horizon) - out["fx_sell"].shift(horizon + 28)
     return out
 

@@ -1,4 +1,4 @@
-"""Tests for feature engineering — principally the leakage guards."""
+"""Tests for feature engineering, principally the leakage guards."""
 
 import numpy as np
 import pandas as pd
@@ -48,7 +48,7 @@ def test_year_is_excluded_from_calendar_features():
     """The original notebook's fatal feature.
 
     `Year` is monotonic, so its test-set value never appears in training and a
-    tree cannot split on it usefully — every forecast collapses to the last
+    tree cannot split on it usefully, every forecast collapses to the last
     year it saw.
     """
     frame = features.add_calendar_features(daily_frame())

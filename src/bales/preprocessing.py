@@ -33,7 +33,7 @@ def merge_exchange_rates(
     if unmatched:
         # `merge_asof(direction="backward")` leaves NaN for any trade predating
         # the first published quote. There is nothing earlier to carry forward,
-        # so fall back to the earliest rate in the FX sheet itself — filling from
+        # so fall back to the earliest rate in the FX sheet itself, filling from
         # the merged frame would not work, since those rows are NaN too.
         logger.info("Back-filling %d transaction(s) preceding the first FX quote", unmatched)
         first = right.iloc[0]

@@ -85,7 +85,7 @@ def test_daily_price_is_weighted_by_accepted_weight():
 
     expected = (1.0 * 100 + 2.0 * 30000) / 30100
     assert daily["Unit_Price_in_USD"].iloc[0] == pytest.approx(expected)
-    # An unweighted mean would have given 1.5 — far from the market truth.
+    # An unweighted mean would have given 1.5, far from the market truth.
     assert daily["Unit_Price_in_USD"].iloc[0] > 1.9
 
 

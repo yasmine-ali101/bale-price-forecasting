@@ -6,7 +6,7 @@ redistributed, so this module synthesises both with the same schema and the same
 economics.
 
 The economics matter more than the schema here. Egypt devalued the pound heavily
-across the study window — roughly 15.7 to 30+ EGP/USD in two large steps — while
+across the study window, roughly 15.7 to 30+ EGP/USD in two large steps, while
 local bale prices rose in nominal terms. A model trained on nominal EGP prices
 is mostly learning the devaluation, not the commodity. Converting to USD is what
 separates the real price signal from the currency collapse, and it is the central

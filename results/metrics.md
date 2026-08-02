@@ -28,7 +28,7 @@ _7-day-ahead forecasts. All features are lagged by at least 7 days, so every inp
 | Rolling mean (14d) | 0.0280 | 0.0349 | 5.75% | 68.1% |
 | Ridge (calendar + lags) | 0.0290 | 0.0366 | 5.92% | 66.7% |
 | XGBoost (calendar + lags) | 0.0375 | 0.0488 | 7.26% | 65.7% |
-| XGBoost on price change (Δ target) | 0.0300 | 0.0381 | 5.97% | 64.3% |
+| XGBoost on price change (tuned) | 0.0294 | 0.0377 | 5.87% | 65.2% |
 
 ## Expanding-window backtest (5 folds, mean)
 
@@ -37,4 +37,4 @@ _7-day-ahead forecasts. All features are lagged by at least 7 days, so every inp
 | Naive (random walk) | 0.0342 | 0.0427 | 7.32% | n/a |
 | Rolling mean (14d) | 0.0281 | 0.0342 | 6.00% | 68.7% |
 | Ridge (calendar + lags) | 0.0288 | 0.0354 | 6.15% | 66.0% |
-| XGBoost on price change (Δ target) | 0.0287 | 0.0348 | 6.09% | 70.0% |
+| XGBoost on price change (tuned) | 0.0285 | 0.0347 | 6.06% | 65.3% |

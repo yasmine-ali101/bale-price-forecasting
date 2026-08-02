@@ -1,4 +1,4 @@
-# Generated sample data — recreated deterministically by src/bales/data.py
+# Generated sample data, recreated deterministically by src/bales/data.py
 data/*.csv
 
 # Python

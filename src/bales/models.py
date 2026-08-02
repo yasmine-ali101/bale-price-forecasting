@@ -30,7 +30,7 @@ class NaiveLastValue(Forecaster):
     """Random walk: tomorrow's price is today's price.
 
     For a commodity price this is the benchmark that matters. Financial series
-    are close to random walks, and beating this one is genuinely hard — a model
+    are close to random walks, and beating this one is genuinely hard, a model
     that cannot is telling you the series has no exploitable structure at this
     horizon.
     """
@@ -66,7 +66,7 @@ class SeasonalNaive(Forecaster):
 
 @dataclass
 class RollingMean(Forecaster):
-    """Mean of the last 14 observed days — a smoothed random walk."""
+    """Mean of the last 14 observed days, a smoothed random walk."""
 
     window: int = 14
     name: str = "Rolling mean (14d)"
@@ -117,8 +117,7 @@ class NotebookBaseline(Forecaster):
 class RidgeForecaster(Forecaster):
     """Regularised linear model on the same features the tree gets.
 
-    Worth including because linear models extrapolate trends and trees do not —
-    on a trending series that can matter more than model capacity.
+    Worth including because linear models extrapolate trends and trees do not, on a trending series that can matter more than model capacity.
     """
 
     alpha: float = 1.0
@@ -187,7 +186,7 @@ class XGBoostDelta(Forecaster):
 
     The standard fix when a tree model underperforms a naive baseline on a
     trending series. Trees predict a weighted average of training leaf values, so
-    they cannot output a level they never saw — on an upward-trending price they
+    they cannot output a level they never saw, on an upward-trending price they
     are structurally biased low.
 
     Reframing the target as `y - lag_h` removes the trend from what the model has
@@ -199,19 +198,19 @@ class XGBoostDelta(Forecaster):
     horizon: int = 7
     params: dict = field(
         default_factory=lambda: {
-            "n_estimators": 500,
+            "n_estimators": 600,
             "learning_rate": 0.03,
-            "max_depth": 3,
-            "subsample": 0.85,
-            "colsample_bytree": 0.8,
-            "min_child_weight": 8,
-            "reg_lambda": 3.0,
+            "max_depth": 2,
+            "subsample": 0.9,
+            "colsample_bytree": 0.9,
+            "min_child_weight": 3,
+            "reg_lambda": 10.0,
             "objective": "reg:squarederror",
             "random_state": 42,
             "n_jobs": -1,
         }
     )
-    name: str = "XGBoost on price change (Δ target)"
+    name: str = "XGBoost on price change (tuned)"
     _model: object | None = None
 
     def _anchor(self, frame: pd.DataFrame) -> np.ndarray:

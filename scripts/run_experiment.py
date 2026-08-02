@@ -149,13 +149,13 @@ def make_plots(frame, daily, predictions, xgb) -> None:
     # 1. Why USD normalisation matters: EGP price vs USD price vs FX rate.
     fig, axes = plt.subplots(3, 1, figsize=(12, 9), sharex=True)
     axes[0].plot(daily.index, daily["mean_price_egp"], color="#dc2626")
-    axes[0].set_title("Nominal bale price (EGP/kg) — dominated by currency devaluation")
+    axes[0].set_title("Nominal bale price (EGP/kg), dominated by currency devaluation")
     axes[0].set_ylabel("EGP/kg")
     axes[1].plot(daily.index, daily["fx_sell"], color="#7c3aed")
     axes[1].set_title("Official EGP/USD exchange rate")
     axes[1].set_ylabel("EGP per USD")
     axes[2].plot(daily.index, daily[TARGET], color="#059669")
-    axes[2].set_title("Real bale price (USD/kg) — the actual modelling target")
+    axes[2].set_title("Real bale price (USD/kg), the actual modelling target")
     axes[2].set_ylabel("USD/kg")
     fig.tight_layout()
     fig.savefig(RESULTS / "why_usd_normalisation.png", dpi=140)
@@ -211,7 +211,7 @@ def write_markdown(report: dict) -> None:
     ]
     for name, m in report["evaluation"]["test_metrics"].items():
         if "error" in m:
-            lines.append(f"| {name} | — | — | — | failed |")
+            lines.append(f"| {name} |, |, |, | failed |")
             continue
         direction = 'n/a' if m['DirAcc'] != m['DirAcc'] else f"{m['DirAcc']:.1f}%"
         lines.append(
